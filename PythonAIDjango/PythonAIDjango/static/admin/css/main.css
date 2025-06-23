@@ -1,0 +1,9 @@
+body.theme-darkly p {
+    color: pink;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.theme-darkly p {
+        color: pink;
+    }
+}
