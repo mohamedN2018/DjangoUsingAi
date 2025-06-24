@@ -1,0 +1,62 @@
+
+{% load static %}
+
+{% block content %}
+<h1>User Profile</h1>
+<p>Welcome to your profile page.</p>
+{% endblock %}
+<style>
+    .profile-container {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: #f9f9f9;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #4a90e2;
+        margin-bottom: 15px;
+    }
+    .profile-field {
+        margin: 10px 0;
+        font-size: 1.1em;
+    }
+    .profile-label {
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+
+<div class="profile-container">
+    {% if user.profile.image %}
+        <img src="{{ user.profile.image.url }}" alt="Profile Image" class="profile-img">
+    {% else %}
+        <img src="{% static 'default_profile.png' %}" alt="Default Profile Image" class="profile-img">
+    {% endif %}
+    <div class="profile-field">
+        <span class="profile-label">Username:</span> {{ user.username }}
+    </div>
+    <div class="profile-field">
+        <span class="profile-label">Email:</span> {{ user.email }}
+    </div>
+    <div class="profile-field">
+        <span class="profile-label">First Name:</span> {{ user.first_name }}
+    </div>
+    <div class="profile-field">
+        <span class="profile-label">Last Name:</span> {{ user.last_name }}
+    </div>
+    {% if user.profile.bio %}
+    <div class="profile-field">
+        <span class="profile-label">Bio:</span> {{ user.profile.bio }}
+    </div>
+    {% endif %}
+    <div class="profile-field">
+        <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">Edit Profile</a>
+    </div>
+</div>

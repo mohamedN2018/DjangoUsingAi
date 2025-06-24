@@ -21,6 +21,7 @@ from django.conf.urls.i18n import set_language
 
 urlpatterns = i18n_patterns(
     path("accounts/", include("django.contrib.auth.urls")),
+    path('accounts/', include('accounts.urls'), name='accounts'),
     path('i18n/setlang/', set_language, name='set_language'),
     path('admin/', admin.site.urls),
     path('', include('core.urls')),

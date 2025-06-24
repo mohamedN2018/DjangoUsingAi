@@ -1,0 +1,291 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile_edit.css' %}">
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f7f9fb;
+        margin: 0;
+        padding: 0;
+    }
+    .profile-edit-container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        padding: 32px 40px 24px 40px;
+    }
+    h2 {
+        text-align: center;
+        color: #2d3a4b;
+        margin-bottom: 32px;
+        letter-spacing: 1px;
+    }
+    form {
+        width: 100%;
+    }
+    .form-group {
+        margin-bottom: 22px;
+    }
+    label {
+        display: block;
+        font-weight: 600;
+        color: #2d3a4b;
+        margin-bottom: 7px;
+        letter-spacing: 0.5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d9e6;
+        border-radius: 6px;
+        background: #f9fafb;
+        font-size: 15px;
+        transition: border 0.2s;
+        margin-bottom: 2px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #4f8cff;
+        outline: none;
+        background: #fff;
+    }
+    input[type="file"] {
+        border: none;
+        background: none;
+        padding: 0;
+    }
+    input[type="checkbox"] {
+        margin-right: 8px;
+        transform: scale(1.2);
+        vertical-align: middle;
+    }
+    small {
+        color: #7a869a;
+        display: block;
+        margin-top: 2px;
+        font-size: 13px;
+    }
+    .error,
+    .errorlist {
+        background: #ffeaea;
+        color: #d93025;
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 14px;
+        font-size: 14px;
+        list-style: disc inside;
+    }
+    .errorlist {
+        background: none;
+        padding: 0 0 0 18px;
+        margin: 4px 0 0 0;
+        color: #d93025;
+    }
+    button[type="submit"] {
+        width: 100%;
+        background: linear-gradient(90deg, #4f8cff 0%, #2356c7 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 0;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 10px;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+    }
+    button[type="submit"]:hover {
+        background: linear-gradient(90deg, #2356c7 0%, #4f8cff 100%);
+    }
+</style>
+<div class="profile-edit-container">
+<h2>Edit Profile</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if profile_form.non_field_errors or user_form.non_field_errors %}
+        <div class="error">
+            <p>Please correct the errors below:</p>
+            <ul>
+                {% for error in profile_form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                {% for error in user_form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="profile_image">Profile Image:</label>
+        <input type="file" name="profile_image" id="profile_image">
+        {% if profile_form.profile_image.errors %}
+            <ul class="errorlist">
+                {% for error in profile_form.profile_image.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea name="bio" id="bio" rows="4">{{ profile_form.bio.value }}</textarea>
+        {% if profile_form.bio.errors %}
+            <ul class="errorlist">
+                {% for error in profile_form.bio.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" value="{{ user_form.first_name.value }}">
+        {% if user_form.first_name.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.first_name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" value="{{ user_form.last_name.value }}">
+        {% if user_form.last_name.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.last_name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="{{ user_form.email.value }}">
+        {% if user_form.email.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.email.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" value="{{ user_form.username.value }}">
+        {% if user_form.username.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <small>Leave blank if you don't want to change your password.</small>
+        {% if user_form.password.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" id="confirm_password">
+        <small>Leave blank if you don't want to change your password.</small>
+        {% if user_form.confirm_password.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.confirm_password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="is_active"><input type="checkbox" name="is_active" id="is_active" {% if user_form.is_active.value %}checked{% endif %}> Active</label>
+        <small>Uncheck to deactivate your account.</small>
+        {% if user_form.is_active.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.is_active.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="is_staff"><input type="checkbox" name="is_staff" id="is_staff" {% if user_form.is_staff.value %}checked{% endif %}> Staff Status</label>
+        <small>Check if you want to grant staff privileges.</small>
+        {% if user_form.is_staff.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.is_staff.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="is_superuser"><input type="checkbox" name="is_superuser" id="is_superuser" {% if user_form.is_superuser.value %}checked{% endif %}> Superuser Status</label>
+        <small>Check if you want to grant superuser privileges.</small>
+        {% if user_form.is_superuser.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.is_superuser.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="groups">Groups:</label>
+        <select name="groups" id="groups">
+            {% for group in user_form.groups.field.queryset %}
+                <option value="{{ group.id }}" {% if group.id in user_form.groups.value %}selected{% endif %}>{{ group.name }}</option>
+            {% endfor %}
+        </select>
+        {% if user_form.groups.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.groups.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="user_permissions">User Permissions:</label>
+        <select name="user_permissions" id="user_permissions" multiple>
+            {% for permission in user_form.user_permissions.field.queryset %}
+                <option value="{{ permission.id }}" {% if permission.id in user_form.user_permissions.value %}selected{% endif %}>{{ permission.name }}</option>
+            {% endfor %}
+        </select>
+        {% if user_form.user_permissions.errors %}
+            <ul class="errorlist">
+                {% for error in user_form.user_permissions.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <input type="hidden" name="user_id" value="{{ user_form.instance.id }}">
+    <input type="hidden" name="profile_id" value="{{ profile_form.instance.id }}">
+    <input type="hidden" name="next" value="{{ next|default_if_none:'' }}">
+    <input type="hidden" name="redirect_field_name" value="{{ redirect_field_name|default:'next' }}">
+    <button type="submit">Save Changes</button>
+</form>
+</div>
+{% endblock %}
