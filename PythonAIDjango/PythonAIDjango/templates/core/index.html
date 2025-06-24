@@ -205,9 +205,40 @@
             <li style="margin: 24px 0;">
                 <a href="#contact" style="color: #fff; text-decoration: none; font-weight: 500; padding: 10px 24px; display: block; transition: background 0.2s;">Contact</a>
             </li>
+            <li style="margin: 24px 0; position: relative;">
+                {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post" style="margin:0;">
+                        {% csrf_token %}
+                        <button type="submit" style="width: 100%; background: #4ea8de; color: #fff; border: none; padding: 10px 24px; font-weight: 500; cursor: pointer; border-radius: 4px;">Logout</button>
+                    </form>
+                {% else %}
+                    <div style="position: relative;">
+                        <button onclick="toggleDropdown()" id="authDropdownBtn" style="width: 100%; background: #4ea8de; color: #fff; border: none; padding: 10px 24px; font-weight: 500; cursor: pointer; border-radius: 4px;">Login / Register ▼</button>
+                        <div id="authDropdown" style="display: none; position: absolute; left: 0; top: 100%; background: #23272b; min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); z-index: 1000; border-radius: 4px;">
+                            <a href="{% url 'login' %}" style="color: #fff; padding: 10px 24px; display: block; text-decoration: none;">Login</a>
+                            <a href="{% url 'register' %}" style="color: #fff; padding: 10px 24px; display: block; text-decoration: none;">Register</a>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleDropdown() {
+                            var dropdown = document.getElementById('authDropdown');
+                            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                        }
+                        document.addEventListener('click', function(event) {
+                            var btn = document.getElementById('authDropdownBtn');
+                            var dropdown = document.getElementById('authDropdown');
+                            if (!btn.contains(event.target) && !dropdown.contains(event.target)) {
+                                dropdown.style.display = 'none';
+                            }
+                        });
+                    </script>
+                {% endif %}
+            </li>
         </ul>
     </nav>
 
+    
     <!-- Navbar Script -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
