@@ -1,1 +1,315 @@
-index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        header {
+            background: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer {
+            background: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        main {
+            padding: 40px 20px 60px 20px;
+            min-height: 80vh;
+        }
+         /* Navbar Styles */
+        nav[style*="position: fixed"] {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        nav[style*="position: fixed"] ul {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        nav[style*="position: fixed"] li {
+            width: 100%;
+        }
+        nav[style*="position: fixed"] a {
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 200;
+        }
+        .menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 5px 0;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 700px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav[style*="position: fixed"] {
+                width: 0 !important;
+                padding-top: 40px !important;
+                overflow: hidden;
+                transition: width 0.3s;
+            }
+            nav[style*="position: fixed"].open {
+                width: 120px !important;
+                overflow: visible;
+            }
+            nav[style*="position: fixed"] ul {
+                display: block;
+            }
+            main {
+                margin-left: 0 !important;
+            }
+        }
+        main {
+            margin-left: 200px;
+            transition: margin-left 0.3s;
+        }
+        @media (max-width: 700px) {
+            main {
+                margin-left: 0 !important;
+            }
+        }
+
+        /* Services Styles in Footer */
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+            color: #fff;
+        }
+        footer ul li {
+            margin-bottom: 4px;
+        }
+         .portfolio-section {
+                background: #fff;
+                border-radius: 16px;
+                box-shadow: 0 6px 24px rgba(44,62,80,0.10), 0 1.5px 4px rgba(44,62,80,0.06);
+                padding: 40px 32px;
+                max-width: 650px;
+                margin: 32px auto;
+                transition: box-shadow 0.3s;
+            }
+            .portfolio-section:hover {
+                box-shadow: 0 12px 32px rgba(44,62,80,0.16), 0 3px 8px rgba(44,62,80,0.10);
+            }
+            .portfolio-section h2 {
+                color: #22223b;
+                font-size: 2.2rem;
+                margin-bottom: 18px;
+                letter-spacing: 1px;
+                font-weight: 700;
+                border-bottom: 2px solid #4ea8de;
+                display: inline-block;
+                padding-bottom: 6px;
+            }
+            .portfolio-section h3 {
+                color: #4ea8de;
+                margin-top: 28px;
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+            .portfolio-section ul {
+                padding-left: 22px;
+                margin-bottom: 14px;
+            }
+            .portfolio-section li {
+                margin-bottom: 8px;
+                font-size: 1rem;
+                color: #22223b;
+                line-height: 1.6;
+                position: relative;
+            }
+            .portfolio-section li::marker {
+                color: #4ea8de;
+                font-size: 1.1em;
+            }
+            .portfolio-section p {
+                color: #495057;
+                font-size: 1.05rem;
+                margin-bottom: 8px;
+            }
+            .portfolio-section a {
+                color: #4ea8de;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .portfolio-section a:hover {
+                color: #22223b;
+                text-decoration: underline;
+            }
+            .category-list {
+                background: #e3f2fd;
+                border-radius: 8px;
+                padding: 12px 18px;
+                margin-bottom: 14px;
+            }
+            .category-list li {
+                color: #1565c0;
+                font-weight: 500;
+            }
+            .whdhs-list {
+                background: #fce4ec;
+                border-radius: 8px;
+                padding: 12px 18px;
+                margin-bottom: 14px;
+            }
+            .whdhs-list li {
+                color: #ad1457;
+                font-style: italic;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Index Page</h1>
+    </header>
+    <nav style="position: fixed; top: 0; left: 0; height: 100vh; width: 200px; background: #23272b; padding-top: 60px; box-shadow: 2px 0 8px rgba(44,62,80,0.08); z-index: 100;">
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li style="margin: 24px 0;">
+                <a href="/" style="color: #fff; text-decoration: none; font-weight: 500; padding: 10px 24px; display: block; transition: background 0.2s;">Home</a>
+            </li>
+            <li style="margin: 24px 0;">
+                <a href="#projects" style="color: #fff; text-decoration: none; font-weight: 500; padding: 10px 24px; display: block; transition: background 0.2s;">Projects</a>
+            </li>
+            <li style="margin: 24px 0;">
+                <a href="#skills" style="color: #fff; text-decoration: none; font-weight: 500; padding: 10px 24px; display: block; transition: background 0.2s;">Skills</a>
+            </li>
+            <li style="margin: 24px 0;">
+                <a href="#contact" style="color: #fff; text-decoration: none; font-weight: 500; padding: 10px 24px; display: block; transition: background 0.2s;">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Script -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('nav[style*="position: fixed"]');
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('open');
+        });
+        // Optional: close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 700 && !nav.contains(e.target) && e.target !== menuToggle) {
+                nav.classList.remove('open');
+            }
+        });
+    </script>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('nav[style*="position: fixed"]');
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('open');
+        });
+        // Optional: close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 700 && !nav.contains(e.target) && e.target !== menuToggle) {
+                nav.classList.remove('open');
+            }
+        });
+    </script>
+    <main>
+        <section class="portfolio-section">
+            <h2>Mohamed's Portfolio</h2>
+            <p>Welcome to Mohamed's portfolio page. Here you can find some of my projects and skills.</p>
+            <h3>Projects</h3>
+            <ul class="project-list">
+                <li><strong>Project 1:</strong> Django Web Application</li>
+                <li><strong>Project 2:</strong> AI Chatbot Integration</li>
+                <li><strong>Project 3:</strong> Dockerized Microservices</li>
+            </ul>
+            <h3>Skills</h3>
+            <ul class="skills-list">
+                <li>Python, Django</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Docker, Git</li>
+            </ul>
+            <h3>Category</h3>
+            <ul class="category-list">
+                <li>Web Development</li>
+                <li>Artificial Intelligence</li>
+                <li>DevOps</li>
+            </ul>
+            <h3>WHDHS</h3>
+            <ul class="whdhs-list">
+                <li>Work Hard</li>
+                <li>Dream High</li>
+                <li>Stay Humble</li>
+            </ul>
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:mohamed@example.com">mohamed@example.com</a></p>
+        </section>
+           
+    </main>
+    <footer>
+        <div style="display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 2fr; align-items: center; gap: 24px; max-width: 1200px; margin: 0 auto; padding: 16px 0;">
+            <!-- Logo (text only, no image) -->
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 1.4rem; font-weight: bold; color: #4ea8de;">Mohamed</span>
+            </div>
+            <!-- Services -->
+            <div>
+                <strong>Services</strong>
+                <ul style="list-style: none; padding: 0; margin: 8px 0 0 0; color: #fff;">
+                    <li>Web Development</li>
+                    <li>AI Solutions</li>
+                    <li>DevOps</li>
+                </ul>
+            </div>
+            <!-- Professional Links -->
+            <div>
+                <strong>Professional</strong>
+                <ul style="list-style: none; padding: 0; margin: 8px 0 0 0;">
+                    <li><a href="https://www.linkedin.com/" target="_blank" style="color: #fff;">LinkedIn</a></li>
+                    <li><a href="https://github.com/" target="_blank" style="color: #fff;">GitHub</a></li>
+                    <li><a href="mailto:mohamed@example.com" style="color: #fff;">Email</a></li>
+                </ul>
+            </div>
+            <!-- Map -->
+            <div>
+                <strong>Location</strong>
+                <div style="margin-top: 8px;">
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=31.2357%2C30.0444%2C31.2457%2C30.0544&amp;layer=mapnik" style="border:0; width:100%; height:60px; border-radius: 6px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div style="text-align: right; color: #fff;">
+                &copy; 2024 Mohamed's Portfolio
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

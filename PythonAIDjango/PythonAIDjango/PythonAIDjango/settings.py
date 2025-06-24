@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path, os
+from pathlib import Path
+import os
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,10 +29,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# LOGIN_REDIRECT_URL = '/your-redirect-url/'
+# LOGIN_REDIRECT_URL = '/accounts/profile/'
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'contact',
-    'account',
 ]
 
 MIDDLEWARE = [

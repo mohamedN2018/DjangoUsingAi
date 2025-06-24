@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <p>Logged out!</p>
+  <a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}
+{% block title %}
+  Logged Out
+{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/logged_out.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/logged_out.js' %}"></script>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+{% endblock %}
+
